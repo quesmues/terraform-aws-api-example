@@ -1,0 +1,6 @@
+    locals {
+        tags = {
+        environment = ""
+        application = ""
+        }
+    }
