@@ -1,3 +1,13 @@
 .vscode/
 .venv/
 **.terraform**
+**terraform.tfstate**
+**.tfplan
+
+.env
+
+**files**
+**__pycache__**
+**python3.10**
+
+*/lambdas/app/
