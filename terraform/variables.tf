@@ -1,11 +1,11 @@
-variable "region" {
+variable "aws_region" {
   description = "Região da AWS que os recursos serão criados"
   type        = string
   default     = "sa-east-1"
 }
 
-variable "repository_list" {
-  description = "Lista com o nome dos repositórios"
-  type        = list
-  default     = ["backend"]
+variable "aws_profile" {
+  description = "Profile do AWS CLI a ser usado"
+  type        = string
+  default     = "default"
 }

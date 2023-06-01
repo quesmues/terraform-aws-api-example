@@ -1,11 +1,13 @@
 provider "aws" {
-  region = var.region
-}
+  region = var.aws_region
+  profile = var.aws_profile
 
-provider "docker" {
-  registry_auth {
-    address  = local.aws_ecr_url
-    username = data.aws_ecr_authorization_token.token.user_name
-    password = data.aws_ecr_authorization_token.token.password
+  default_tags {
+    tags = {
+      Project   = "Lambda Layers com Terraform"
+      CreatedAt = formatdate("YYYY-MM-DD", timestamp())
+      ManagedBy = "Terraform"
+      Owner     = "Eduard Czamanski Rota"
+    }
   }
 }

@@ -1,7 +1,11 @@
 locals {
-  tags = {
-    environment = ""
-    application = ""
+  lambdas_path = "../aws/lambdas"
+  layers_path  = "../aws/layers"
+
+  common_tags = {
+    Project   = "Lambda Layers with Terraform"
+    CreatedAt = formatdate("YYYY-MM-DD", timestamp())
+    ManagedBy = "Terraform"
+    Owner     = "Eduardo Czamanski Rota"
   }
-  aws_ecr_url = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.region}.amazonaws.com"
 }
