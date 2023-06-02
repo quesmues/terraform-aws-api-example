@@ -2,3 +2,4 @@ aiohttp==3.8.4
 boto3==1.26.144
 fastapi==0.95.2
 python-dotenv==1.0.0
+cachetools==5.3.1
