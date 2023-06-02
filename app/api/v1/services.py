@@ -61,6 +61,7 @@ async def get_all_projects(url: str, projects: Projects) -> Projects:
     results = await _gen_offset_results(
         url, len(projects.projects), projects.totalCount
     )
+    results = [x for x in results if x.get("projects", None)]
     data = [
         project for x in results for project in x.get("projects", [])
     ] + projects.projects
