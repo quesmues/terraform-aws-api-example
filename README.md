@@ -10,7 +10,7 @@ Consulte **Implantação** para saber como implantar o projeto.
 
 ### Pré-requisitos
 
-Instale o Python 3.10 e o Terraform.
+Instale o Python 3.10, Terraform e o AWS Cli (lembre-se de configurar suas credenciais).
 
 Consulte **Terraform** para saber realizar a implementação dos pré requisitos de ambiente.
 
@@ -93,8 +93,12 @@ AWS_CLIENT_KEY = client_secret
 
 E para implementar o servidor produtivo, instalar o docker e executar o comando abaixo:
 
+Nota: Lembre-se de passar o valor dos argumentos no build pois é necessário para instalar o AWS Cli
+
 ```
-docker-compose up -d --build
+docker-compose build --build-arg AWS_SECRET_KEY="" --build-arg AWS_SECRET_ACCESS_KEY="" --build-arg 
+AWS_DEFAULT_REGION=""
+docker-compose up
 ```
 
 A imagem será construida e o projeto estará rodando em um container.
