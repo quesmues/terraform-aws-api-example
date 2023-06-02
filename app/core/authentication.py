@@ -1,6 +1,7 @@
 import base64
 import hashlib
 import hmac
+import logging
 
 import aiohttp
 import boto3
@@ -71,5 +72,7 @@ class AWSAuthToken:
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 headers={"WWW-Authenticate": "Basic"},
             )
-        except Exception:
+        except Exception as e:
+            if settings.debug:
+                logging.debug(f"Error: {e}")
             raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
