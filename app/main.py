@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1.routes import router as v1_router
 from app.config.settings import settings
 
-app = FastAPI(debug=settings.debug)
+app = FastAPI(debug=settings.debug, title="Terraform AWS API Example", version="0.0.1")
 
 app.include_router(v1_router)
 
