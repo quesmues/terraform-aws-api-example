@@ -65,6 +65,7 @@ class AWSAuthToken:
         except (
             self.client.exceptions.NotAuthorizedException,
             self.client.exceptions.UserNotConfirmedException,
+            self.client.exceptions.ResourceNotFoundException,
         ):
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
