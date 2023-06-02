@@ -1,3 +1,4 @@
+import logging
 import os
 import pathlib
 
@@ -26,3 +27,6 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+if settings.debug:
+    logging.basicConfig(level=logging.DEBUG)

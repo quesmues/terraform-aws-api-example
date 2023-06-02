@@ -1,9 +1,11 @@
 import asyncio
+import logging
 from typing import Any, Dict, List
 
 import aiohttp
 
 from app.api.v1.models import Projects, ScansSummaries
+from app.config.settings import settings
 from app.core.authentication import CheckmarxAuthToken
 
 auth = CheckmarxAuthToken()
@@ -12,8 +14,12 @@ auth = CheckmarxAuthToken()
 async def _get_data(url: str, **data) -> Dict:
     token = await auth.get_token()
     headers = {"Authorization": f"Bearer {token}"}
-    async with aiohttp.ClientSession(headers=headers) as session:
+    async with aiohttp.ClientSession(
+        headers=headers,
+    ) as session:
         response = await session.get(url, params=data)
+        if settings.debug:
+            print(f"Starting request <{response.method} {response.url.path}>")
         response.raise_for_status()
         return await response.json()
 
